@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,12 +22,13 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <title>React App</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -39,5 +38,352 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#010409">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Hash file - Calculate your file content hash online</title>
+  <meta name="description"
+    content="Get the hash of any file content for free and instantly, with your browser, no installation required, and without sending your contents accross the web">
+  <link rel="alternate" href="https://hash-file.online" hreflang="en" />
+  <link rel="alternate" href="https://empreinte-numerique.org" hreflang="fr" />
+  <meta property="og:title" content="Hash file - Calculate your file content hash online">
+  <meta property="og:site_name" content="Hash file">
+  <meta property="og:url" content="https://hash-file.online">
+  <meta property="og:description"
+    content="Get the hash of any file content for free and instantly, with your browser, no installation required, and without sending your contents accross the web">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/img/hash-file-poster.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L99W0TRCZT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-L99W0TRCZT');
+  </script>
+
+</head>
+
+<body>
+
+  <div class="container py-5">
+
+    <div class="row justify-content-end">
+      <button class="btn btn-custom" onclick="process()">
+        <i class="fa-light fa-microchip"></i>
+        Launch hash process
+      </button>
+    </div>
+
+    <div class="row justify-content-center">
+
+      <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+
+        <h1 class="text-center mb-4">
+          <img src="/img/hash-file-logo-100.png" alt="Logo Hash file" width="50" height="50">
+          <br>
+          Hash file online
+        </h1>
+
+        <div class="row">
+
+          <div class="col-md-12 pb-3 mb-3 border-bottom">
+            <p>
+              <span class="badge bg-custom">
+                1
+              </span>
+              Select a file to hash
+            </p>
+            <div class="mb-3">
+              <label for="my-file-input" class="form-label">Select a file to hash from your system</label>
+              <input class="form-control" type="file" id="my-file-input">
+            </div>
+          </div>
+
+          <div class="col-md-12 pb-3 mb-3 border-bottom">
+            <p>
+              <span class="badge bg-custom">
+                2
+              </span>
+              Choose your hash function
+            </p>
+            <div class="form-check">
+              <input type="radio" id="hash_fn_md5" name="hash_fn" class="form-check-input" value="md5" checked>
+              <label class="form-check-label" for="hash_fn_md5">
+                MD5
+                <small>
+                  |
+                  <em>
+                    128-bit
+                  </em>
+                </small>
+              </label>
+            </div>
+            <div class="form-check">
+              <input type="radio" id="hash_fn_sha1" name="hash_fn" class="form-check-input" value="sha1">
+              <label class="form-check-label" for="hash_fn_sha1">
+                SHA-1
+                <small>
+                  |
+                  <em>
+                    160-bit
+                  </em>
+                </small>
+              </label>
+            </div>
+            <div class="form-check">
+              <input type="radio" id="hash_fn_sha256" name="hash_fn" class="form-check-input" value="sha256">
+              <label class="form-check-label" for="hash_fn_sha256">
+                SHA-256
+                <small>
+                  |
+                  <em>
+                    256-bit
+                  </em>
+                </small>
+              </label>
+            </div>
+            <div class="form-check">
+              <input type="radio" id="hash_fn_sha512" name="hash_fn" class="form-check-input" value="sha512">
+              <label class="form-check-label" for="hash_fn_sha512">
+                SHA-512
+                <small>
+                  |
+                  <em>
+                    512-bit
+                  </em>
+                </small>
+              </label>
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <div class="row justify-content-center mt-3" id="progress-container" style="display:none">
+          <div class="col-8">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped" role="progressbar" style="width:0%" aria-valuenow="0"
+                aria-valuemin="0" aria-valuemax="100" id="progress-bar"></div>
+            </div>
+          </div>
+          <div class="col-12 mt-3 text-center">
+            <p>
+              <strong>
+                Your file hash :
+              </strong>
+            </p>
+            <p class="font-monospace text-break" id="console"></p>
+          </div>
+          <div class="col-12 mt-3" id="result-container" style="display:none">
+            <p class="text-center">
+              <strong>
+                Your file description :
+              </strong>
+            </p>
+            <p class="font-monospace text-break" id="description"></p>
+          </div>
+          <div class="col-12 text-center mt-3" id="cancel-container" style="display:none">
+            <button type="button" name="button" class="btn btn-sm btn-danger" onclick="location.reload()">
+              <i class="fa-light fa-times"></i>
+              Cancel
+            </button>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    var hash_fn = "md5";
+    var hash_fn_name = "MD5";
+
+    function process() {
+
+      if (!document.getElementById("my-file-input").files.length) {
+        alert('You must select a file to hash first.');
+      }
+
+      document.getElementById("cancel-container").style.display = "block";
+      document.getElementById("progress-bar").classList.remove("bg-success");
+      document.getElementById("progress-bar").style.width = "0%";
+      document.getElementById("console").innerHTML = "";
+      document.getElementById("result-container").style.display = "none";
+      document.getElementById("description").innerHTML = "";
+
+      getHASH(
+        document.getElementById("my-file-input").files[0],
+        prog => displayProgess(prog)
+      ).then(
+        res => displayResults(res),
+        err => displayError(err)
+      );
+
+    }
+
+    function displayProgess(prog) {
+      document.getElementById("progress-container").style.display = "flex";
+      document.getElementById("progress-bar").style.width = (prog * 100) + "%";
+      document.getElementById("console").innerHTML = "Your file hash is being calculated : " + parseInt(prog * 100) + "%";
+      console.log("Progress: " + prog);
+    }
+    function displayResults(res) {
+
+      document.getElementById("progress-bar").style.width = "100%";
+      document.getElementById("progress-bar").classList.add("bg-success");
+      document.getElementById("console").innerHTML = res;
+      document.getElementById("cancel-container").style.display = "none";
+
+      console.log(res);
+
+      var the_file = document.getElementById("my-file-input").files[0]
+      var description_array = [];
+      if (the_file.name && the_file.name.length) {
+        description_array.push("\"" + the_file.name + "\"");
+      }
+      if (the_file.size && the_file.size > 0) {
+        description_array.push("with size of " + formatBytes(the_file.size));
+      }
+      if (res && res.length) {
+        switch (hash_fn) {
+          case "md5":
+            hash_fn_name = "MD5";
+            break;
+          case "sha1":
+            hash_fn_name = "SHA-1";
+            break;
+          case "sha256":
+            hash_fn_name = "SHA-256";
+            break;
+          case "sha512":
+            hash_fn_name = "SHA-512";
+            break;
+          default:
+            hash_fn_name = "MD5";
+        }
+        description_array.push("and file hash using the hashing algorithm " + hash_fn_name + " has the value : " + res + ".");
+      }
+      var description = description_array.join(", ");
+      document.getElementById("result-container").style.display = "block";
+      document.getElementById("description").innerHTML = description;
+    }
+
+    function displayError(err) {
+      console.log(err);
+    }
+
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 bytes';
+      console.log(bytes);
+
+      return parseFloat((Math.ceil(bytes))).toLocaleString('en') + ' kb (kilobytes)';
+    }
+
+    function readChunked(file, chunkCallback, endCallback) {
+
+      var fileSize = file.size;
+      var chunkSize = 4 * 1024 * 1024; // 4MB
+      var offset = 0;
+
+      var reader = new FileReader();
+
+      reader.onload = function () {
+        if (reader.error) {
+          endCallback(reader.error || {});
+          return;
+        }
+        offset += reader.result.length;
+        // callback for handling read chunk
+        // TODO: handle errors
+        chunkCallback(reader.result, offset, fileSize);
+        if (offset >= fileSize) {
+          endCallback(null);
+          return;
+        }
+        readNext();
+      };
+
+      reader.onerror = function (err) {
+        endCallback(err || {});
+      };
+
+      function readNext() {
+        var fileSlice = file.slice(offset, offset + chunkSize);
+        reader.readAsBinaryString(fileSlice);
+      }
+      readNext();
+    }
+
+    function getHASH(blob, cbProgress) {
+
+      return new Promise((resolve, reject) => {
+
+        hash_fn = document.querySelector('input[name="hash_fn"]:checked').value;
+
+        switch (hash_fn) {
+          case "md5":
+            var the_hash = CryptoJS.algo.MD5.create();
+            break;
+          case "sha1":
+            var the_hash = CryptoJS.algo.SHA1.create();
+            break;
+          case "sha256":
+            var the_hash = CryptoJS.algo.SHA256.create();
+            break;
+          case "sha512":
+            var the_hash = CryptoJS.algo.SHA512.create();
+            break;
+          default:
+            var the_hash = CryptoJS.algo.MD5.create();
+        }
+
+        readChunked(blob, (chunk, offs, total) => {
+          the_hash.update(CryptoJS.enc.Latin1.parse(chunk));
+          if (cbProgress) {
+            cbProgress(offs / total);
+          }
+        }, err => {
+          if (err) {
+            reject(err);
+          } else {
+            // TODO: Handle errors
+            var hash = the_hash.finalize();
+            var hashHex = hash.toString(CryptoJS.enc.Hex);
+            resolve(hashHex);
+          }
+        });
+
+      });
+    }
+
+
+  </script>
+
+</body>
+
 </html>
