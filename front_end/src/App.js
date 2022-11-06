@@ -1,4 +1,4 @@
-import { DAppProvider, Rinkeby, Kovan, Mainnet } from "@usedapp/core";
+import { DAppProvider, Goerli, Mainnet } from "@usedapp/core";
 import { getDefaultProvider } from 'ethers'
 import "./App.css";
 
@@ -7,12 +7,11 @@ import Wallet from './components/Wallet';
 function App() {
 
   const config = {
-    networks: [Rinkeby],
-    readOnlyChainId: Rinkeby.chainId,
+    networks: [Goerli],
+    readOnlyChainId: Goerli.chainId,
     readOnlyUrls: {
       [Mainnet.chainId]: getDefaultProvider('mainnet'),
-      [Rinkeby.chainId]: `https://rinkeby.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}`,
-      [Kovan.chainId]: `https://kovan.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}`
+      [Goerli.chainId]: `https://goerli.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}`
     },
     notifications: {
       expirationPeriod: 1000, //milliseconds

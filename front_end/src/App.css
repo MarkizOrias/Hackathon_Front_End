@@ -14,14 +14,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #181515;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-end;
+  justify-content: flex-start;
+  font-size: calc(5px + 1vmin);
+  color: rgb(69, 204, 170);
 }
 
 .App-link {
@@ -47,7 +47,7 @@
 }
 
 .bal {
-  border: 1px solid #cccccc;
+  border: 1px solid #242020;
   padding: 1% 5%;
   border-radius: 12px;
   background: rgba(72 176 226 / 10%);
