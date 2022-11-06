@@ -1,34 +1,38 @@
 import React from 'react'
-import { useEthers, useEtherBalance, Rinkeby, Kovan, Mainnet } from '@usedapp/core'
+import { useEthers, useEtherBalance, Goerli, Mainnet } from '@usedapp/core'
 import { formatEther } from '@ethersproject/units'
+import { utils } from "ethers"
 
 
 const changeBackground = e => {
-    e.target.style.background = 'chocolate';
+    e.target.style.background = 'lightblue';
 }
 const resetBackground = e => {
-    e.target.style.background = 'antiquewhite';
+    e.target.style.background = 'darkbrown';
 }
 
 
 const Wallet = () => {
 
     const { activateBrowserWallet, account, deactivate } = useEthers()
-    const rinkebyBalance = useEtherBalance(account, { chainId: Rinkeby.chainId })
-    const kovanBalance = useEtherBalance(account, { chainId: Kovan.chainId })
+    const goerliBalance = useEtherBalance(account, { chainId: Goerli.chainId })
     const mainnetBalance = useEtherBalance(account, { chainId: Mainnet.chainId })
-
 
     return (
         <div>
             <h3>
-                dApp Wallet
+                Wallet
             </h3>
             {
                 account
                     ?
                     <div>
-                        <p>Your account: {account}</p> <br />
+                        <div>
+                            {
+                                account
+                            }
+                        </div>
+                        <br />
                         <button onClick={deactivate} className="btn" onMouseOver={changeBackground} onMouseOut={resetBackground}>
                             Disconnect
                         </button>
@@ -36,30 +40,24 @@ const Wallet = () => {
                         {/* Display wallet balance */}
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '10px 20px' }}>
                             {
-                                rinkebyBalance &&
+                                goerliBalance &&
                                 <div className="bal">
-                                    <h4>Rinkeby Balance</h4>
-                                    {formatEther(rinkebyBalance)}
-                                </div>
-                            }
-                            {
-                                kovanBalance &&
-                                <div className="bal" >
-                                    <h4>Kovan Balance</h4>
-                                    {formatEther(kovanBalance)}
+                                    <h4>Goerli Balance</h4>                                   
+                                    {Math.round(utils.formatEther(goerliBalance)*1e5)/1e5 + " ETH"}
                                 </div>
                             }
                             {
                                 mainnetBalance &&
                                 <div className="bal">
                                     <h4>Mainnet Balance</h4>
-                                    {formatEther(mainnetBalance)}
+                                    {Math.round(utils.formatEther(mainnetBalance)*1e5)/1e5 + " ETH"}
                                 </div>
                             }
                         </div>
                     </div>
                     : <p>
-                        Please connect wallet. <br />
+                        <div>
+                        Please connect your wallet. </div><br />
                         <button
                             onClick={() => activateBrowserWallet()}
                             className="btn"
