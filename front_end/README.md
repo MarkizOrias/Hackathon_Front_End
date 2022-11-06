@@ -1,3 +1,11 @@
+HOW TO START:
+1. Pull POPhackaton repo
+2. npx create-react-app front_end --template typescript
+3. yarn add @usedapp/core ethers
+4. pull Hachathon_Front_End
+
+
+
 # Decentralized App Tutorial: Ballot app
 
 This project was bootstrapped with Create React App. It uses web3.js and useDApp for the smart contract and web3 functionalities.
