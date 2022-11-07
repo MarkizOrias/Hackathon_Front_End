@@ -2,9 +2,9 @@ const UserForm = () => {
 
     return (
         <div>
-            <img src="logoOTT.png" alt="Logo Hash file" width="120" height="120" />
+            <img src="logoOTT.png" alt="LogoOTT" width="120" height="120" />
             <br />
-            <h1>Certichain</h1>
+            <img src="logoCERTI.png" alt="LogoCERTI" width="379" height="111" />
             <br />
             <label />
             <h2 class="form-check-msg">Store your copyrights on a blockchain in just 5 steps!</h2>
