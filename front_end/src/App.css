@@ -61,7 +61,7 @@
   --bs-badge-padding-y: 0.35em;
   --bs-badge-font-size: 0.75em;
   --bs-badge-font-weight: 600;
-  --bs-badge-color: #fff;
+  --bs-badge-color: rgb(48, 41, 10);
   --bs-badge-border-radius: 0.5rem;
   display: inline-block;
   padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
@@ -83,9 +83,9 @@
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  background-color: #fff;
+  background-color: rgba(72 176 226 / 10%);
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid #242020;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
