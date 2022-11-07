@@ -3,6 +3,7 @@ import { getDefaultProvider } from 'ethers'
 import "./App.css";
 
 import Wallet from './components/Wallet';
+import UserForm from './components/UserForm';
 
 function App() {
 
@@ -26,6 +27,9 @@ function App() {
         <header className="App-header">
           <Wallet />
         </header>
+        <body className="App-body">
+          <UserForm />
+        </body>
       </div>
     </DAppProvider>
   );
