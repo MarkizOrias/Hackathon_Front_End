@@ -22,7 +22,7 @@ const Wallet = () => {
                             {
                                 goerliBalance &&
                                 <div>
-                                    <div class="bal">Goerli Balance:<br />
+                                    <div className="bal">Goerli Balance:<br />
                                         {Math.round(utils.formatEther(goerliBalance) * 1e5) / 1e5 + " ETH"}<br /><br />
                                         Address:<br />
                                         {account}
@@ -33,7 +33,7 @@ const Wallet = () => {
                             {
                                 mainnetBalance &&
                                 <div>
-                                    <div class="bal">Mainnet Balance:<br />
+                                    <div className="bal">Mainnet Balance:<br />
                                         {Math.round(utils.formatEther(mainnetBalance) * 1e5) / 1e5 + " ETH"}<br /><br />
                                         Balance:<br />
                                         {account}
@@ -44,19 +44,18 @@ const Wallet = () => {
                         <br />
 
 
-                        <button onClick={deactivate} class="button">
+                        <button onClick={deactivate} className="button">
                             Disconnect
                         </button>
                         <br />
 
                     </div>
                     : <p>
-                        <div>
-                            Please connect your wallet. </div><br />
+                        Please connect your wallet. <br /><br />
                         <button
                             onClick={() => activateBrowserWallet()}
                             type="action"
-                            class="button"
+                            className="button"
                         >
                             Connect Wallet
                         </button>

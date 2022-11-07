@@ -25,7 +25,7 @@ function App() {
     <DAppProvider config={config}>
       <div className="App">
         <header>
-          <div class="App-header App-wallet">
+          <div className="App-header App-wallet">
             <Wallet />
           </div>
         </header>
