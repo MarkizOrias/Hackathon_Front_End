@@ -13,7 +13,7 @@
   padding-right: 4rem;
   right: 0;
   font-size: calc(5px + 1vmin);
-  color: rgb(255, 255, 255);
+  color: rgb(180, 146, 119);
 }
 
 .App-body {
@@ -24,7 +24,8 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 1vmin);
-  color: rgb(255, 255, 255);
+  font: icon;
+  color: rgb(180, 146, 119);
 }
 
 .mar-bot {
@@ -50,9 +51,9 @@
 /* Styles from hasher website */
 
 .bg-custom {
-  background-color: #3f3960;
-  background: #3f3960;
-  background: linear-gradient(120deg, #2a2640, #3f3960 40%, #544d80)
+  background-color: #776441;
+  background: #7a6845;
+  background: linear-gradient(120deg, #776441, #967e51 40%, #dab675)
 }
 
 .badge {
