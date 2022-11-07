@@ -24,8 +24,10 @@ function App() {
 
     <DAppProvider config={config}>
       <div className="App">
-        <header className="App-header">
-          <Wallet />
+        <header>
+          <div class="App-header App-wallet">
+            <Wallet />
+          </div>
         </header>
         <body className="App-body">
           <UserForm />
