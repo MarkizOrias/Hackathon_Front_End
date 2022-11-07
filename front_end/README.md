@@ -3,6 +3,7 @@ HOW TO START:
 2. npx create-react-app front_end --template typescript
 3. yarn add @usedapp/core ethers
 4. pull Hachathon_Front_End
+5. Add REACT_APP_INFURA_KEY to local (front_end) .env file
 
 
 

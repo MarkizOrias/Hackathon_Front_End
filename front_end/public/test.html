@@ -1,0 +1,217 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+        <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+
+            <h1 class="text-center mb-4">
+                <img src="logoOTT.png" alt="Logo Hash file" width="120" height="120">
+                <br>
+                PROJECT NAME HERE
+            </h1>
+
+            <div class="row">
+
+                <div class="col-md-12 pb-3 mb-3 border-bottom">
+                    <label><strong>Provide all attributes of your work</strong></label>
+                    <div>
+                        Title of your work
+                        <small>
+                            <input class="form-control" name="work-title" value="" id="title-input">
+                        </small>
+                        Your name
+                        <small>
+                            <input class="form-control" name="your-name" value="" id="name-input">
+                        </small>
+                        Co-author
+                        <small>
+                            <input class="form-control" name="co-author" value="" id="co-author-input">
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-md-12 pb-3 mb-3 border-bottom">
+                    <div class="mb-3">
+                        <label for="my-file-input" class="form-label"><strong>Select a file to be certified from your
+                                system</strong></label>
+                        <input class="form-control" type="file" id="my-file-input">
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-center mt-3" id="progress-container" style="display:none">
+                    <div class="col-8">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width:0%"
+                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3 text-center">
+                        <p>
+                            <strong>
+                                Your file hash :
+                            </strong>
+                        </p>
+                        <p class="font-monospace text-break" id="console"></p>
+                    </div>
+                    <div class="col-12 mt-3" id="result-container" style="display:none">
+                        <p class="text-center">
+                            <strong>
+                                Your file description :
+                            </strong>
+                        </p>
+                        <p class="font-monospace text-break" id="description"></p>
+                    </div>
+                    <div class="col-12 text-center mt-3" id="cancel-container" style="display:none">
+                        <button type="button" name="button" class="btn btn-sm btn-danger" onclick="location.reload()">
+                            <i class="fa-light fa-times"></i>
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="row justify-content-end">
+                        <button class="btn btn-custom" onclick="process()">
+                            <i class="fa-light fa-microchip"></i>
+                            Launch hash process
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var hash_fn = "sha256";
+        var hash_fn_name = "SHA-256";
+
+        function process() {
+
+            if (!document.getElementById("my-file-input").files.length) {
+                alert('You must select a file to hash first.');
+            }
+
+            document.getElementById("cancel-container").style.display = "block";
+            document.getElementById("progress-bar").classList.remove("bg-success");
+            document.getElementById("progress-bar").style.width = "0%";
+            document.getElementById("console").innerHTML = "";
+            document.getElementById("result-container").style.display = "none";
+            document.getElementById("description").innerHTML = "";
+
+            getHASH(
+                document.getElementById("my-file-input").files[0],
+                prog => displayProgess(prog)
+            ).then(
+                res => displayResults(res),
+                err => displayError(err)
+            );
+
+        }
+
+        function displayProgess(prog) {
+            document.getElementById("progress-container").style.display = "flex";
+            document.getElementById("progress-bar").style.width = (prog * 100) + "%";
+            document.getElementById("console").innerHTML = "Your file hash is being calculated : " + parseInt(prog * 100) + "%";
+            console.log("Progress: " + prog);
+        }
+        function displayResults(res) {
+
+            document.getElementById("progress-bar").style.width = "100%";
+            document.getElementById("progress-bar").classList.add("bg-success");
+            document.getElementById("console").innerHTML = res;
+            document.getElementById("cancel-container").style.display = "none";
+
+            console.log(res);
+
+            var the_file = document.getElementById("my-file-input").files[0]
+            var description_array = [];
+            if (the_file.name && the_file.name.length) {
+                description_array.push("\"" + the_file.name + "\"");
+            }
+            if (the_file.size && the_file.size > 0) {
+                description_array.push("with size of " + formatBytes(the_file.size));
+            }
+            if (res && res.length) {
+                switch (hash_fn) {
+                    default:
+                        hash_fn_name = "SHA-256";
+                }
+                description_array.push("and file hash using the hashing algorithm " + hash_fn_name + " has the value : " + res + ".");
+            }
+            var description = description_array.join(", ");
+            document.getElementById("result-container").style.display = "block";
+            document.getElementById("description").innerHTML = description;
+        }
+
+        function displayError(err) {
+            console.log(err);
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 bytes';
+            console.log(bytes);
+
+            return parseFloat((Math.ceil(bytes))).toLocaleString('en') + ' kb (kilobytes)';
+        }
+
+        function readChunked(file, chunkCallback, endCallback) {
+
+            var fileSize = file.size;
+            var chunkSize = 4 * 1024 * 1024; // 4MB
+            var offset = 0;
+
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                if (reader.error) {
+                    endCallback(reader.error || {});
+                    return;
+                }
+                offset += reader.result.length;
+                // callback for handling read chunk
+                // TODO: handle errors
+                chunkCallback(reader.result, offset, fileSize);
+                if (offset >= fileSize) {
+                    endCallback(null);
+                    return;
+                }
+                readNext();
+            };
+
+            reader.onerror = function (err) {
+                endCallback(err || {});
+            };
+
+            function readNext() {
+                var fileSlice = file.slice(offset, offset + chunkSize);
+                reader.readAsBinaryString(fileSlice);
+            }
+            readNext();
+        }
+
+        function getHASH(blob, cbProgress) {
+
+            return new Promise((resolve, reject) => {
+
+                var the_hash = CryptoJS.algo.SHA256.create();
+
+
+                readChunked(blob, (chunk, offs, total) => {
+                    the_hash.update(CryptoJS.enc.Latin1.parse(chunk));
+                    if (cbProgress) {
+                        cbProgress(offs / total);
+                    }
+                }, err => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        // TODO: Handle errors
+                        var hash = the_hash.finalize();
+                        var hashHex = hash.toString(CryptoJS.enc.Hex);
+                        resolve(hashHex);
+                    }
+                });
+
+            });
+        }
+
+
+    </script>
