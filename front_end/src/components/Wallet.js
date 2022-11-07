@@ -5,7 +5,7 @@ import { utils } from "ethers"
 
 
 const changeBackground = e => {
-    e.target.style.background = 'lightblue';
+    e.target.style.background = 'lightbrown';
 }
 const resetBackground = e => {
     e.target.style.background = 'darkbrown';
