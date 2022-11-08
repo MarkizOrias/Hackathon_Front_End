@@ -1,4 +1,3 @@
-
 from brownie import ProofOfPropCreator, MockV3Aggregator, network, config
 from scripts.get_hash import hash_file, user_input
 from scripts.helpful_scripts import (
@@ -7,17 +6,20 @@ from scripts.helpful_scripts import (
     LOCAL_BLOCKCHAIN_ENVIRONMENTS,
 )
 import time
+import yaml
 
 
 def main():
-    deploy_POP_Creator() # Neftyr: deploy creator contract (factory)
+    deploy_POP_Creator(
+        front_end_update=True
+    )  # Neftyr: deploy creator contract (factory)
     # fund() # Disabled as requested
-    show_balance() # Neftyr: show balance before any deployments
-    deploy_POP() # Neftyr: deploy contract for Client
-    show_balance() # Neftyr: show balance after client certificate deployment
+    show_balance()  # Neftyr: show balance before any deployments
+    deploy_POP()  # Neftyr: deploy contract for Client
+    show_balance()  # Neftyr: show balance after client certificate deployment
 
 
-def deploy_POP_Creator():
+def deploy_POP_Creator(front_end_update=False):
     account = get_account()
 
     # pass the price feed address to the contract
@@ -41,6 +43,8 @@ def deploy_POP_Creator():
     time.sleep(5)
     # check Reading contract in testnet (goerli etherscan)
     print(f"Contract depolyed to {proof_of_prop_creator.address}")
+    if front_end_update:
+        update_front_end()
     return proof_of_prop_creator
 
 
@@ -70,13 +74,13 @@ def deploy_POP():
     account = get_account()
     proof_of_prop_creator = ProofOfPropCreator[-1]
     # Just to make sure fee will be covered, add some Wei to it: 100000000
-    fee = proof_of_prop_creator.getMinimumFee({"from": account}) + 10 ** 8
+    fee = proof_of_prop_creator.getMinimumFee({"from": account}) + 10**8
     # Below deploy is paid from {"from": account} -> so we have to put account of our client here.
     pop_deploy = proof_of_prop_creator.addCertificate(
         "certificate",
         "date",
         "title",
-        account, # NI: "proof_of_prop_creator" changed into "account" as owner of generated cert is our Client.
+        account,  # NI: "proof_of_prop_creator" changed into "account" as owner of generated cert is our Client.
         "name",
         "additional",
         hash_file(user_input),
@@ -87,3 +91,11 @@ def deploy_POP():
     print(f"Transaction: {pop_deploy}")
     print(f"Last Certificate: {lastCert}")
     # NI: TODO -> add return pop_deploy (In order to change contract owner)
+
+
+def update_front_end():
+    with open("brownie-config.yaml", "r") as brownie_config:
+        config_dict = yaml.load(brownie_config, Loader=yaml.FullLoader)
+        with open("./front_end/src/brownie-config.json", "w") as brownie_config_json:
+            json.dump(config_dict, brownie_config_json)
+        print("Front end updated!")
