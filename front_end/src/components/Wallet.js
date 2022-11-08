@@ -18,12 +18,13 @@ const Wallet = () => {
                     ?
                     <div>
                         {/* Display wallet balance */}
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px 20px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', gap: '3px' }}>
                             {
                                 goerliBalance &&
                                 <div>
-                                    <div className="bal">Wallet:<br />
-                                        {account}<br /><br />Goerli Balance:<br />
+                                    <div className="bal">Connected wallet:<br />
+                                        {account.substring(0, 8)}...{account.substring(account.length - 4)}
+                                        <br /><br />Goerli Balance:<br />
                                         {Math.round(utils.formatEther(goerliBalance) * 1e5) / 1e5 + " ETH"}
 
                                     </div>
