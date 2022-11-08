@@ -9,14 +9,16 @@ const UserForm = () => {
 
         if (first.length == 0) {
             alert('You must select a file to certify first!');
-        } else if (second.length == 0 || third.length == 0 || fourth.length == 0) {
+        } else if (second.length == 0 || third.length == 0) {
             alert('You must fill all required fields below!');
+        } else {
+            const obj = { _title: second, _name: third, _additional: fourth };
+            const myJSON = JSON.stringify(obj);
+
+            localStorage.setItem("testJSON", myJSON); //F12=>Application->Storage->localstorage->testJSON file
         }
 
-        const obj = { _title: second, _name: third, _additional: fourth };
-        const myJSON = JSON.stringify(obj);
 
-        localStorage.setItem("testJSON", myJSON); //F12=>Application->Storage->localstorage->testJSON file
     }
     return (
         <div>
