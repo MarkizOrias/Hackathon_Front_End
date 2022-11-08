@@ -19,6 +19,10 @@
 
 }
 
+.red {
+  color: red;
+}
+
 .App-wallet {
   left: 70%;
 }

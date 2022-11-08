@@ -22,10 +22,10 @@ const Wallet = () => {
                             {
                                 goerliBalance &&
                                 <div>
-                                    <div className="bal">Goerli Balance:<br />
-                                        {Math.round(utils.formatEther(goerliBalance) * 1e5) / 1e5 + " ETH"}<br /><br />
-                                        Address:<br />
-                                        {account}
+                                    <div className="bal">Wallet:<br />
+                                        {account}<br /><br />Goerli Balance:<br />
+                                        {Math.round(utils.formatEther(goerliBalance) * 1e5) / 1e5 + " ETH"}
+
                                     </div>
                                 </div>
                             }
