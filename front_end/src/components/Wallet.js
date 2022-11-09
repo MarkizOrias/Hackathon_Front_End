@@ -4,7 +4,6 @@ import { formatEther } from '@ethersproject/units'
 import { utils } from "ethers"
 
 
-
 const Wallet = () => {
 
     const { activateBrowserWallet, account, deactivate } = useEthers()
