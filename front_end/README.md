@@ -1,9 +1,9 @@
 HOW TO START:
-1. Pull POPhackaton repo
-2. npx create-react-app front_end --template typescript
-3. yarn add @usedapp/core ethers
+1. Pull POPhackaton repo (Back_End)
+2. Type in main folder console -> `npx create-react-app front_end --template typescript`
+3. Type in front_end folder console -> `yarn add @usedapp/core ethers`
 4. pull Hachathon_Front_End
-5. Add REACT_APP_INFURA_KEY to local (front_end) .env file
+5. Add .env file to local front_end folder with REACT_APP_INFURA_KEY
 
 
 
