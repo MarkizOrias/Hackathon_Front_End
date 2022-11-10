@@ -1,4 +1,5 @@
-from brownie import ProofOfPropCreator
+
+from brownie import CopyRightLockCreator
 from scripts.helpful_scripts import get_account
 from scripts.get_hash import hash_file, user_input
 
@@ -11,14 +12,15 @@ def main():
 # Neftyr: Look Comments
 def deploy_certificate():
     account = get_account()
-    proof_of_prop_creator = ProofOfPropCreator[-1]
+    proof_of_prop_creator = CopyRightLockCreator[-1]
     # Just to make sure fee will be covered, add some Wei to it: 100000000
-    fee = proof_of_prop_creator.getMinimumFee() + 10**8
+    fee = proof_of_prop_creator.getMinimumFee() + 10 ** 8
     # Below deploy is paid from {"from": account} -> so we have to put account of our client here.
     pop_deploy = proof_of_prop_creator.addCertificate(
+        "certificate",
         "date",
         "title",
-        account,  # Niferu: "proof_of_prop_creator" changed into "account" as owner of generated cert is our Client.
+        account, # Niferu: "proof_of_prop_creator" changed into "account" as owner of generated cert is our Client.
         "name",
         "additional",
         hash_file(user_input),
@@ -32,6 +34,6 @@ def deploy_certificate():
 
 def show_balance():
     account = get_account()
-    proof_of_prop_creator = ProofOfPropCreator[-1]
+    proof_of_prop_creator = CopyRightLockCreator[-1]
     current_balance = proof_of_prop_creator.showBalance({"from": account})
     print(f"Current balance of creator contract is: {current_balance}")
