@@ -6,6 +6,7 @@ var second = document.getElementById("titleInput")
 var third = document.getElementById("nameInput")
 var fourth = document.getElementById("coAuthorInput")
 
+const metaMaskConnected = new Boolean(false);
 
 const connectButton = document.getElementById("connectButton")
 connectButton.onclick = connect
@@ -61,6 +62,7 @@ async function addCert(res) {
         value: ethers.utils.parseEther(ethAmount)
       })
       await listenForTransactionMine(transactionResponse, provider)
+      metaMaskConnected = true
     } catch (error) {
       console.log(error)
     }
@@ -197,8 +199,12 @@ async function errGetHash() {
     alert('You must select a file to certify first!')
   } else if (second.value.trim().length == 0 || third.value.trim().length == 0) {
     alert('You must fill all required fields below!')
+  } else if (metaMaskConnected == false) {
+    alert('Your wallet is disconnected, please connect using the connection button!')
   } else {
     process()
     addCert()
   }
+
 }
+
