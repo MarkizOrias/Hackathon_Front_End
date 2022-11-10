@@ -1,0 +1,89 @@
+{
+  "contracts": {
+    "CopyRightLock": "78c062ac1cf85dfb7a1d3a09c77f09dcf9f18eed",
+    "CopyRightLockCreator": "3b75b57f8b1b94f1ffcdf139a15df632dd648051",
+    "CopyRightLocker": "4272e0e4ab51d27d24a0a257e9c6b0bf5a4aff6d",
+    "MockV3Aggregator": "937b86e6a7b2644538089a5138ec41857ec72299",
+    "OpenZeppelin/openzeppelin-contracts@4.7.3/ERC20": "38166fcfbc8e730a0752b73e497cde48b5457655"
+  },
+  "tests": {
+    "tests/integration/test_add_cert_int.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "s",
+      "sha1": "90e7cce6d55cc503d8847fc13a9a26a71406a0fd",
+      "txhash": []
+    },
+    "tests/integration/test_get_min_fee.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "s",
+      "sha1": "758661e09485d93664362b6d994d7caf088921ea",
+      "txhash": []
+    },
+    "tests/unit/test_add_cert.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": ".",
+      "sha1": "6c10ce078fffa10630f52c72376b2952740d9159",
+      "txhash": []
+    },
+    "tests/unit/test_balance.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": ".",
+      "sha1": "194dc4b77db3a8998909eb1da3c8157435731f72",
+      "txhash": []
+    },
+    "tests/unit/test_getters.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "...",
+      "sha1": "9889d39dc19f0e5667ae0c3771e28d266eb7d198",
+      "txhash": []
+    },
+    "tests/unit/test_transfer_ownership.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": ".",
+      "sha1": "90b0cc5258617c6c880efb2f70c653d290dd42c4",
+      "txhash": []
+    },
+    "tests/unit/test_withdraw.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "..",
+      "sha1": "e9c15c54d389acc1c7e9bf4748a8eb6d93ab9805",
+      "txhash": [
+        "9d8025d2c99282bdb9b33d1a9379bc54b4582992"
+      ]
+    }
+  },
+  "tx": {
+    "9d8025d2c99282bdb9b33d1a9379bc54b4582992": {
+      "CopyRightLockCreator": {
+        "0": [
+          [
+            18
+          ],
+          [
+            27
+          ],
+          []
+        ],
+        "4": [
+          [
+            17
+          ],
+          [],
+          []
+        ],
+        "9": [
+          [],
+          [],
+          []
+        ]
+      }
+    }
+  }
+}

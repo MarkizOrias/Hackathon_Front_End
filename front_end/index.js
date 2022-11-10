@@ -1,10 +1,15 @@
 import { ethers } from "./ethers-5.6.esm.min.js"
 import { abi, contractAddress } from "./constants.js"
 
+// Inputs For AddCertificate Function:
 var first = document.getElementById("fileInput")
 var second = document.getElementById("titleInput")
 var third = document.getElementById("nameInput")
 var fourth = document.getElementById("coAuthorInput")
+
+// Inputs For TransferOnwership Function:
+var transferTo = document.getElementById("recipientAddressInput")
+var transferWhat = document.getElementById("contractToTransferAddress")
 
 const metaMaskConnected = new Boolean(false);
 
@@ -34,23 +39,22 @@ async function connectAndDisplayBalance() {
   }
 }
 
+// Function below is helpful and should be removed in production
 async function prynt() {
   pryntButton.innerHTML = "prynt"
   const provider = new ethers.providers.Web3Provider(window.ethereum)
   const signer = provider.getSigner()
   const signer_address = signer.getAddress(this)
   const contract = new ethers.Contract(contractAddress, abi, signer)
-  const fee = contract.getMinimumFee()
-  const f = fee.toString()
-  console.log(fee)
+  const fee = await contract.getMinimumFee()
+  const buffored_fee = fee * 1 + 1000
+  const ethAmount = (buffored_fee/10**18).toString()
+  //const ethAmount = corrected_fee + 1000
+  //const f = fee.toString()
+  console.log(fee, buffored_fee, ethAmount)
 }
 
 async function addCert(res) {
-
-  //const contract.address
-  const d = new Date()
-  const ethAmount = "0.05"
-  let date = d.toString()
 
   console.log(`Adding Certificate...`)
   if (typeof window.ethereum !== "undefined") {
@@ -60,6 +64,11 @@ async function addCert(res) {
     const contract = new ethers.Contract(contractAddress, abi, signer)
     const nonce = await provider.getTransactionCount(contractAddress)
     const anticipatedAddress = ethers.utils.getContractAddress({ from: contractAddress, nonce })
+    const fee = await contract.getMinimumFee()
+    const buffored_fee = fee * 1 + 1000
+    const ethAmount = (buffored_fee/10**18).toString()
+    const d = new Date()
+    let date = d.toString()
     try {
       const transactionResponse = await contract.addCertificate(anticipatedAddress, date, second.value, signer_address, third.value, fourth.value, res, {
         value: ethers.utils.parseEther(ethAmount)
@@ -93,22 +102,18 @@ async function checkCerts() {
 }
 
 async function transferOwnership() {
-
-  input1 = x
-  input2 = y
-
-  //const ethAmount = "0.05"
-
   console.log(`Transferring Ownership...`)
   if (typeof window.ethereum !== "undefined") {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const signer = provider.getSigner()
     const signer_address = signer.getAddress(this)
     const contract = new ethers.Contract(contractAddress, abi, signer)
-    const fee = contract.getMinimumFee()
+    const fee = await contract.getMinimumFee()
+    const buffored_fee = fee * 1 + 1000
+    const ethAmount = (buffored_fee/10**18).toString()
     try {
-      const transactionResponse = await contract.transferOwnership(signer_address, input1, input2, {
-        value: ethers.utils.parseEther(fee)
+      const transactionResponse = await contract.transferOwnership(signer_address, transferTo, transferWhat, {
+        value: ethers.utils.parseEther(ethAmount)
       })
       await listenForTransactionMine(transactionResponse, provider)
     } catch (error) {
@@ -119,7 +124,7 @@ async function transferOwnership() {
   }
 }
 
-
+// Function below is helpful and should be removed in production
 async function test() {
   console.log(second.value)
 
@@ -135,8 +140,6 @@ async function process() {
   )
 
 }
-
-
 
 async function readChunked(file, chunkCallback, endCallback) {
 
