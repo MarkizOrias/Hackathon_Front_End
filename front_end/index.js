@@ -9,14 +9,13 @@ var fourth = document.getElementById("coAuthorInput")
 const metaMaskConnected = new Boolean(false);
 
 const connectButton = document.getElementById("connectButton")
-connectButton.onclick = connect
+connectButton.onclick = connectAndDisplayBalance
 const pryntButton = document.getElementById("pryntButton")
-pryntButton.onclick = checkCerts
+pryntButton.onclick = prynt
 const storeButton = document.getElementById("storeButton")
 storeButton.onclick = errGetHash
 
-
-async function connect() {
+async function connectAndDisplayBalance() {
   if (typeof window.ethereum !== "undefined") {
     try {
       await ethereum.request({ method: "eth_requestAccounts" })
@@ -25,7 +24,11 @@ async function connect() {
     }
     connectButton.innerHTML = "Connected"
     const accounts = await ethereum.request({ method: "eth_accounts" })
-    console.log(accounts)
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const balance = await provider.getBalance(accounts.toString())
+    const balanceInEth = ethers.utils.formatEther(balance);
+    console.log(balanceInEth);
+    console.log(accounts.toString())
   } else {
     connectButton.innerHTML = "Please install MetaMask"
   }
@@ -62,7 +65,7 @@ async function addCert(res) {
         value: ethers.utils.parseEther(ethAmount)
       })
       await listenForTransactionMine(transactionResponse, provider)
-      metaMaskConnected = true
+
     } catch (error) {
       console.log(error)
     }
@@ -202,8 +205,8 @@ async function errGetHash() {
   } else if (metaMaskConnected == false) {
     alert('Your wallet is disconnected, please connect using the connection button!')
   } else {
-    process()
-    addCert()
+    // process()
+    // addCert()
   }
 
 }
