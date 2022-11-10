@@ -76,7 +76,6 @@ def deploy_POP():
     fee = proof_of_prop_creator.getMinimumFee({"from": account}) + 10**8
     # Below deploy is paid from {"from": account} -> so we have to put account of our client here.
     pop_deploy = proof_of_prop_creator.addCertificate(
-        "certificate",
         "date",
         "title",
         account,  # NI: "proof_of_prop_creator" changed into "account" as owner of generated cert is our Client.
