@@ -161,7 +161,7 @@ input[type="file"]::file-selector-button {
   border: 2px solid rgb(99, 67, 41);
   padding: 0.2em 0.4em;
   border-radius: 0.2em;
-  background-color: #CEAD94;
+  background: linear-gradient(120deg, #776441, #CEAD94 40%, #e5d7bc);
   transition: 2s;
 }
 
