@@ -1,6 +1,7 @@
 import { ethers } from "./ethers-5.6.esm.min.js"
 import { abi, contractAddress } from "./constants.js"
-
+const pryntButton = document.getElementById("pryntButton")
+pryntButton.onclick = prynt
 // Inputs For AddCertificate Function:
 var first = document.getElementById("fileInput")
 var second = document.getElementById("titleInput")
@@ -8,8 +9,8 @@ var third = document.getElementById("nameInput")
 var fourth = document.getElementById("coAuthorInput")
 
 // Inputs For TransferOnwership Function:
-var transferWhat = document.getElementById("cprAddInput")
-var transferTo = document.getElementById("reciInput")
+const transferTo = document.getElementById("reciInput")
+const transferWhat = document.getElementById("cprAddInput")
 
 
 // Inputs For Fuction Buttons:
@@ -26,8 +27,6 @@ hideCertsBtn.onclick = hideListBtn
 const chngOwnBtn = document.getElementById("chngOwnBtn")
 chngOwnBtn.onclick = changeOwnership
 
-
-
 // TODO
 // const checkCertsBtn = document.getElementById("checkCertsBtn")
 // checkCertsBtn.onclick = checkCerts
@@ -41,6 +40,23 @@ const stateMidTwo = document.getElementById("stateMidTwo")
 const addWall = document.getElementById("addWall")
 const balWall = document.getElementById("balWall")
 const listWall = document.getElementById("listWall")
+
+
+async function prynt() {
+  pryntButton.innerHTML = "prynt"
+  
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
+  const signer = provider.getSigner()
+  const signer_address = signer.getAddress(this)
+
+  const miau = transferTo.value
+  const ram = ethers.utils.getAddress(miau) 
+  const hau = JSON.stringify(miau)
+  const rax = (transferTo.value).toString()
+
+  console.log(ram)
+}
+
 
 function disconnectAndHideBalance() {
   stateTwo.style.display = "none"
@@ -63,7 +79,7 @@ async function connectAndDisplayBalance() {
 
     stateOne.style.display = "none"
     connectButton.innerHTML = "Show Balance"
-    firstMessage.innerHTML = "You're connected"
+    firstMessage.innerHTML = "You're Connected"
 
     const accounts = await ethereum.request({ method: "eth_accounts" })
     const acc = accounts.toString()
@@ -130,7 +146,7 @@ async function checkCerts() {
       stateMidOne.style.display = "none"
       stateMidTwo.style.display = "block"
       if (result.length == 0) {
-        listWall.innerHTML = "Your address has no copyrights yet"
+        listWall.innerHTML = "Your Address Has No Copyright's Yet"
       } else {
         for (let i = 0; i < result.length; i++) {
           listWall.innerHTML += result[i] + "<br>"
@@ -146,7 +162,7 @@ async function checkCerts() {
   }
 }
 
-async function transferOwnership(transferTo, transferWhat) {
+async function transOwnership() {
   console.log(`Transferring Ownership...`)
   if (typeof window.ethereum !== "undefined") {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -161,22 +177,16 @@ async function transferOwnership(transferTo, transferWhat) {
         value: ethers.utils.parseEther(ethAmount)
       })
       await listenForTransactionMine(transactionResponse, provider)
+
     } catch (error) {
       console.log(error)
     }
   } else {
-    addButton.innerHTML = "Please install MetaMask"
+    chngOwnBtn.innerHTML = "Please install MetaMask"
   }
 }
 
-// Function below is helpful and should be removed in production
-async function test() {
-  console.log(second.value)
-
-}
-
 // Hashing Functions
-
 async function process() {
 
   getHASH(
@@ -263,7 +273,7 @@ async function changeOwnership() {
   if (transferWhat.value.trim().length == 0 || transferTo.value.trim().length == 0) {
     alert('You must fill all required fields below!')
   } else {
-    transferOwnership()
+    transOwnership()
   }
 }
 
