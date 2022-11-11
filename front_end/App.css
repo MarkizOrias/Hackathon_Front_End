@@ -84,7 +84,7 @@
   width: 160px;
   height: 40px;
   border: 2px solid rgb(99, 67, 41);
-  background-color: #CEAD94;
+  background: linear-gradient(120deg, #776441, #CEAD94 40%, #e5d7bc);
   transition: 2s;
 }
 

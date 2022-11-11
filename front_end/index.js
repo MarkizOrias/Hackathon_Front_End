@@ -8,8 +8,9 @@ var third = document.getElementById("nameInput")
 var fourth = document.getElementById("coAuthorInput")
 
 // Inputs For TransferOnwership Function:
-var transferTo = document.getElementById("recipientAddressInput")
-var transferWhat = document.getElementById("contractToTransferAddress")
+var transferWhat = document.getElementById("cprAddInput")
+var transferTo = document.getElementById("reciInput")
+
 
 // Inputs For Fuction Buttons:
 const disconnectButton = document.getElementById("disconnectButton")
@@ -22,6 +23,10 @@ const checkCertsBtn = document.getElementById("checkCertsBtn")
 checkCertsBtn.onclick = checkCerts
 const hideCertsBtn = document.getElementById("hideCertsBtn")
 hideCertsBtn.onclick = hideListBtn
+const chngOwnBtn = document.getElementById("chngOwnBtn")
+chngOwnBtn.onclick = changeOwnership
+
+
 
 // TODO
 // const checkCertsBtn = document.getElementById("checkCertsBtn")
@@ -141,7 +146,7 @@ async function checkCerts() {
   }
 }
 
-async function transferOwnership() {
+async function transferOwnership(transferTo, transferWhat) {
   console.log(`Transferring Ownership...`)
   if (typeof window.ethereum !== "undefined") {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -152,7 +157,7 @@ async function transferOwnership() {
     const buffored_fee = fee * 1 + 1000
     const ethAmount = (buffored_fee / 10 ** 18).toString()
     try {
-      const transactionResponse = await contract.transferOwnership(signer_address, transferTo, transferWhat, {
+      const transactionResponse = await contract.transferOwnership(signer_address, transferTo.value, transferWhat.value, {
         value: ethers.utils.parseEther(ethAmount)
       })
       await listenForTransactionMine(transactionResponse, provider)
@@ -251,11 +256,21 @@ async function errStoreHash() {
     process()
     addCert()
   }
+}
+
+
+async function changeOwnership() {
+  if (transferWhat.value.trim().length == 0 || transferTo.value.trim().length == 0) {
+    alert('You must fill all required fields below!')
+  } else {
+    transferOwnership()
+  }
+}
 
   // TODO:
   // if (metaMaskConnected == false) {
   //   alert('Your wallet is disconnected, please connect using the connection button!')
   // } else 
 
-}
+
 
