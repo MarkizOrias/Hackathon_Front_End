@@ -123,7 +123,7 @@ async function checkCerts() {
       stateMidOne.style.display = "none"
       stateMidTwo.style.display = "block"
       if (result.length == 0) {
-        listWall.innerHTML = "Your Address Has No Copyright's Yet"
+        listWall.innerHTML = "Your address has no copyrights yet"
       } else {
         for (let i = 0; i < result.length; i++) {
           listWall.innerHTML += result[i] + "<br>"
@@ -249,6 +249,8 @@ async function errStoreHash() {
 async function changeOwnership() {
   if (transferWhat.value.trim().length == 0 || transferTo.value.trim().length == 0) {
     alert('You must fill all required fields below!')
+  } else if (ethers.utils.isAddress(transferWhat.value) == false || ethers.utils.isAddress(transferTo.value) == false) {
+    alert('You must provide address in a valid format!')
   } else {
     tranOwnership()
   }
