@@ -1,7 +1,6 @@
 import { ethers } from "./ethers-5.6.esm.min.js"
 import { abi, contractAddress } from "./constants.js"
-const pryntButton = document.getElementById("pryntButton")
-pryntButton.onclick = prynt
+
 // Inputs For AddCertificate Function:
 var first = document.getElementById("fileInput")
 var second = document.getElementById("titleInput")
@@ -11,7 +10,6 @@ var fourth = document.getElementById("coAuthorInput")
 // Inputs For TransferOnwership Function:
 const transferTo = document.getElementById("reciInput")
 const transferWhat = document.getElementById("cprAddInput")
-
 
 // Inputs For Fuction Buttons:
 const disconnectButton = document.getElementById("disconnectButton")
@@ -27,10 +25,6 @@ hideCertsBtn.onclick = hideListBtn
 const chngOwnBtn = document.getElementById("chngOwnBtn")
 chngOwnBtn.onclick = changeOwnership
 
-// TODO
-// const checkCertsBtn = document.getElementById("checkCertsBtn")
-// checkCertsBtn.onclick = checkCerts
-
 // Inputs For Status changes:
 const firstMessage = document.getElementById("firstMessage")
 const stateOne = document.getElementById("stateOne")
@@ -40,23 +34,6 @@ const stateMidTwo = document.getElementById("stateMidTwo")
 const addWall = document.getElementById("addWall")
 const balWall = document.getElementById("balWall")
 const listWall = document.getElementById("listWall")
-
-
-async function prynt() {
-  pryntButton.innerHTML = "prynt"
-  
-  const provider = new ethers.providers.Web3Provider(window.ethereum)
-  const signer = provider.getSigner()
-  const signer_address = signer.getAddress(this)
-
-  const miau = transferTo.value
-  const ram = ethers.utils.getAddress(miau) 
-  const hau = JSON.stringify(miau)
-  const rax = (transferTo.value).toString()
-
-  console.log(ram)
-}
-
 
 function disconnectAndHideBalance() {
   stateTwo.style.display = "none"
@@ -142,7 +119,6 @@ async function checkCerts() {
     try {
 
       const result = await contract.getCertificatesYouOwn(signer_address)
-      // addresses = out.then(value => { address = value })
       stateMidOne.style.display = "none"
       stateMidTwo.style.display = "block"
       if (result.length == 0) {
@@ -174,7 +150,7 @@ async function tranOwnership() {
     const ethAmount = (buffored_fee / 10 ** 18).toString()
     try {
       const transactionResponse = await contract.transOwnership(signer_address, transferTo.value, transferWhat.value, {
-        from: signer_address, value: ethers.utils.parseEther(ethAmount)
+        value: ethers.utils.parseEther(ethAmount)
       })
       await listenForTransactionMine(transactionResponse, provider)
 
@@ -276,11 +252,3 @@ async function changeOwnership() {
     tranOwnership()
   }
 }
-
-  // TODO:
-  // if (metaMaskConnected == false) {
-  //   alert('Your wallet is disconnected, please connect using the connection button!')
-  // } else 
-
-
-
