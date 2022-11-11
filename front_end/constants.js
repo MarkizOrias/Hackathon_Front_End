@@ -1,4 +1,4 @@
-export const contractAddress = "0xeE7935713c6C005FbEB067287359C78E0cd3b150"
+export const contractAddress = "0x2394042A1d755CC1c8C2c23a21c1c73F1dcd8e7f"
 export const abi = [
   {
     "inputs": [
@@ -217,7 +217,7 @@ export const abi = [
         "type": "address"
       }
     ],
-    "name": "transferOwnership",
+    "name": "transOwnership",
     "outputs": [],
     "stateMutability": "payable",
     "type": "function"

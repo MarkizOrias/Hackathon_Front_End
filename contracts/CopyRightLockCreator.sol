@@ -61,7 +61,7 @@ contract CopyRightLockCreator is Ownable {
         return addressToContract[_yourAddress];
     }
 
-    // NI: Below function defines minimal fee's to use addCertificate() and transferOwnership() functions.
+    // NI: Below function defines minimal fee's to use addCertificate() and transOwnership() functions.
     function getMinimumFee() public view returns (uint256) {
         (, int256 price, , , ) = ethUsdPriceFeed.latestRoundData(); // Takes this from AggregatorV3 latestRoundData
         uint256 adjustedPrice = uint256(price) * 10**10; // adjustedPrice has to be expressed with 18 decimals. From Chainlink pricefeed, we know ETH/USD has 8 decimals, so we need to multiply by 10^10
@@ -88,7 +88,7 @@ contract CopyRightLockCreator is Ownable {
     }
 
     // NI: Function to change owner of certificate
-    function transferOwnership(address current_owner, address new_owner, address cert_address) public payable {
+    function transOwnership(address current_owner, address new_owner, address cert_address) public payable {
         
         require(current_owner == msg.sender, "You Are Not Owner Of This Certificate!");
         require(msg.value >= getMinimumFee(), "Not Enough ETH, you have to pay to create certificate!");

@@ -1,7 +1,7 @@
 {
   "contracts": {
     "CopyRightLock": "78c062ac1cf85dfb7a1d3a09c77f09dcf9f18eed",
-    "CopyRightLockCreator": "3b75b57f8b1b94f1ffcdf139a15df632dd648051",
+    "CopyRightLockCreator": "83e72accd5bbd152a3cdfc00691d2df585d2a200",
     "CopyRightLocker": "4272e0e4ab51d27d24a0a257e9c6b0bf5a4aff6d",
     "MockV3Aggregator": "937b86e6a7b2644538089a5138ec41857ec72299",
     "OpenZeppelin/openzeppelin-contracts@4.7.3/ERC20": "38166fcfbc8e730a0752b73e497cde48b5457655"
@@ -46,7 +46,7 @@
       "coverage": false,
       "isolated": false,
       "results": ".",
-      "sha1": "90b0cc5258617c6c880efb2f70c653d290dd42c4",
+      "sha1": "3143b693f42852e6078bd1c49b6e423fa098611a",
       "txhash": []
     },
     "tests/unit/test_withdraw.py": {
@@ -55,12 +55,12 @@
       "results": "..",
       "sha1": "e9c15c54d389acc1c7e9bf4748a8eb6d93ab9805",
       "txhash": [
-        "9d8025d2c99282bdb9b33d1a9379bc54b4582992"
+        "6303092a24786c198ac024bb598c865d9e4d9c4d"
       ]
     }
   },
   "tx": {
-    "9d8025d2c99282bdb9b33d1a9379bc54b4582992": {
+    "6303092a24786c198ac024bb598c865d9e4d9c4d": {
       "CopyRightLockCreator": {
         "0": [
           [
@@ -71,14 +71,14 @@
           ],
           []
         ],
-        "4": [
+        "1": [
           [
             17
           ],
           [],
           []
         ],
-        "9": [
+        "4": [
           [],
           [],
           []
