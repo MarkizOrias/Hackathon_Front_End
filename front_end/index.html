@@ -2,21 +2,70 @@
 <html class="App">
 <link rel="stylesheet" href="App.css">
 
-<head class="App-header App-wallet">
+<head>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
     integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
 
-  <title>Fund Me App</title>
-  <button id="connectButton">Connect</button>
+  <title>CopyRightLock</title>
+  <div>
+    <div>
+      <div class="fixed" id="stateOne">
+        <div id="firstMessage" class="bal">Please connect your wallet<br /><br /><button class="button" type="action"
+            id="connectButton">
+            Connect Wallet
+          </button></div><br />
+        <div></div>
+      </div>
+      <div class="fixed" id="stateTwo" style="display:none;">
+        <div class="bal ">Connected wallet:
+          <div id="addWall"></div><br />Goerli Balance:
+          <div id="balWall"></div><br /><button class="button" type="action" id="disconnectButton">
+            Hide balance
+          </button>
+        </div><br />
+        <div></div>
+      </div>
+
+      <!--//This is for Mainnet// <div class="fixed" id="stateTwo" style="display:none;">
+        <div class="bal ">Connected wallet:
+          <div id="addWall"></div><br />Mainnet Balance:
+          <div id="balWall"></div>
+        </div><br />
+        <div><button class="button" type="action" id="disconnectButton">
+            Hide balance
+          </button></div>
+      </div> -->
+
+
+    </div>
+
+    <!-- TODO -->
+    <!-- <div>
+      <div class="fixedMid" id="stateMidOne">
+        <div class="balMid">Check certificates you own<br /></div><br />
+        <div><button class="button" type="action" id="checkCertsBtn">
+            Check Now
+          </button></div>
+      </div>
+      <div class="fixedMid" id="stateMidTwo" style="display:none;">
+        <div class="balMid">List of certificates you own:
+          <div id="addWall"></div><br />
+          <div><button class="button" type="action" id="hideCertsBtn">
+              Hide list
+            </button></div>
+        </div>
+      </div> -->
+
 </head>
 
 <body class="App-body">
 
-  <button id="pryntButton">Print</button>
+  <!-- <button id="pryntButton">Print</button> -->
   <!-- <form> -->
-  <button type="button" id="addButton"> Create Certificate </button>
+  <!-- <button type="button" id="addButton"> Create Certificate </button> -->
   <!-- </form> -->
 
   <div>
@@ -30,8 +79,8 @@
     <h3 class="form-check"><span class="badge bg-custom mar-bot"> 1 </span>&nbsp;Select the file from your
       system<span class="red"> *</span><br /><input class="form-control" type="file" id="fileInput" name="typeInput1" />
     </h3>
-    <h3 class="form-check"><span class="badge bg-custom mar-bot"> 2 </span>&nbsp;Title of your work<span
-        class="red"> *</span>
+    <h3 class="form-check"><span class="badge bg-custom mar-bot"> 2 </span>&nbsp;Title of your work<span class="red">
+        *</span>
       <br /><input class="form-control" type="text" id="titleInput" name="typeInput2" />
     </h3>
     <h3 class="form-check"><span class="badge bg-custom mar-bot"> 3 </span>&nbsp;Your name<span class="red">
@@ -45,8 +94,8 @@
     <h3 class="form-check"><span class="badge bg-custom mar-bot"> 5 </span>&nbsp;Store your copyrights
       on-chain<br /><button type="submit" class="button" id="storeButton" name="store-button">Store</button>
     </h3>
-
   </div>
+
 </body>
 
 <script src="./index.js" type="module"></script>

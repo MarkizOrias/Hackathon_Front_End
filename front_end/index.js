@@ -11,14 +11,29 @@ var fourth = document.getElementById("coAuthorInput")
 var transferTo = document.getElementById("recipientAddressInput")
 var transferWhat = document.getElementById("contractToTransferAddress")
 
-const metaMaskConnected = new Boolean(false);
-
+// Inputs For Fuction Buttons:
+const disconnectButton = document.getElementById("disconnectButton")
+disconnectButton.onclick = disconnectAndHideBalance
 const connectButton = document.getElementById("connectButton")
 connectButton.onclick = connectAndDisplayBalance
-const pryntButton = document.getElementById("pryntButton")
-pryntButton.onclick = prynt
 const storeButton = document.getElementById("storeButton")
-storeButton.onclick = errGetHash
+storeButton.onclick = errStoreHash
+
+// TODO
+// const checkCertsBtn = document.getElementById("checkCertsBtn")
+// checkCertsBtn.onclick = checkCerts
+
+// Inputs For Status changes:
+const stateOne = document.getElementById("stateOne")
+const firstMessage = document.getElementById("firstMessage")
+const stateTwo = document.getElementById("stateTwo")
+const addWall = document.getElementById("addWall")
+const balWall = document.getElementById("balWall")
+
+async function disconnectAndHideBalance() {
+  stateTwo.style.display = "none"
+  stateOne.style.display = "block"
+}
 
 async function connectAndDisplayBalance() {
   if (typeof window.ethereum !== "undefined") {
@@ -28,30 +43,24 @@ async function connectAndDisplayBalance() {
       console.log(error)
     }
     connectButton.innerHTML = "Connected"
-    const accounts = await ethereum.request({ method: "eth_accounts" })
-    const provider = new ethers.providers.Web3Provider(window.ethereum)
-    const balance = await provider.getBalance(accounts.toString())
-    const balanceInEth = ethers.utils.formatEther(balance);
-    console.log(balanceInEth);
-    console.log(accounts.toString())
-  } else {
-    connectButton.innerHTML = "Please install MetaMask"
-  }
-}
+    stateOne.style.display = "none"
 
-// Function below is helpful and should be removed in production
-async function prynt() {
-  pryntButton.innerHTML = "prynt"
-  const provider = new ethers.providers.Web3Provider(window.ethereum)
-  const signer = provider.getSigner()
-  const signer_address = signer.getAddress(this)
-  const contract = new ethers.Contract(contractAddress, abi, signer)
-  const fee = await contract.getMinimumFee()
-  const buffored_fee = fee * 1 + 1000
-  const ethAmount = (buffored_fee/10**18).toString()
-  //const ethAmount = corrected_fee + 1000
-  //const f = fee.toString()
-  console.log(fee, buffored_fee, ethAmount)
+    const accounts = await ethereum.request({ method: "eth_accounts" })
+    const acc = accounts.toString()
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    const balance = await provider.getBalance(acc)
+    const balanceInEth = ethers.utils.formatEther(balance);
+    const accAbb = acc.substring(0, 8) + "..." + acc.substring(acc.length - 4)
+    const balanceAbb = Math.round(balanceInEth * 1e5) / 1e5 + " ETH"
+
+    addWall.innerHTML = accAbb
+    balWall.innerHTML = balanceAbb
+
+    stateTwo.style.display = "block"
+
+  } else {
+    firstMessage.innerHTML = "Please install MetaMask and reload this page"
+  }
 }
 
 async function addCert(res) {
@@ -66,7 +75,7 @@ async function addCert(res) {
     const anticipatedAddress = ethers.utils.getContractAddress({ from: contractAddress, nonce })
     const fee = await contract.getMinimumFee()
     const buffored_fee = fee * 1 + 1000
-    const ethAmount = (buffored_fee/10**18).toString()
+    const ethAmount = (buffored_fee / 10 ** 18).toString()
     const d = new Date()
     let date = d.toString()
     try {
@@ -92,12 +101,14 @@ async function checkCerts() {
     const contract = new ethers.Contract(contractAddress, abi, signer)
     try {
       const out = contract.getCertificatesYouOwn(signer_address)
-      console.log(out)
+
+      const txtOut = await out.toString()
+      console.log(txtOut)
     } catch (error) {
       console.log(error)
     }
   } else {
-    addButton.innerHTML = "Please install MetaMask"
+    checkCertsBtn.innerHTML = "Please install MetaMask"
   }
 }
 
@@ -110,7 +121,7 @@ async function transferOwnership() {
     const contract = new ethers.Contract(contractAddress, abi, signer)
     const fee = await contract.getMinimumFee()
     const buffored_fee = fee * 1 + 1000
-    const ethAmount = (buffored_fee/10**18).toString()
+    const ethAmount = (buffored_fee / 10 ** 18).toString()
     try {
       const transactionResponse = await contract.transferOwnership(signer_address, transferTo, transferWhat, {
         value: ethers.utils.parseEther(ethAmount)
@@ -129,6 +140,8 @@ async function test() {
   console.log(second.value)
 
 }
+
+// Hashing Functions
 
 async function process() {
 
@@ -199,7 +212,7 @@ async function getHASH(blob, cbProgress) {
   })
 }
 
-async function errGetHash() {
+async function errStoreHash() {
 
   if (!first.files.length) {
     alert('You must select a file to certify first!')

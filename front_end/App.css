@@ -1,3 +1,12 @@
+.fixed {
+  position: fixed;
+  background-color: transparent;
+  top: 10%;
+  left: 90%;
+  transform: translate(-50%, -0%);
+}
+
+
 .App {
   background-color: #181515;
   text-align: center;
@@ -6,26 +15,18 @@
   padding-bottom: 3rem !important;
 }
 
-.App-header {
-  background-color: transparent;
-  text-align: center;
-  position: fixed;
-  padding-right: 1rem;
-  right: 0;
-  font-size: calc(5px + 1vmin);
-  color: #CEAD94;
-  min-height: fit-content;
-  min-width: fit-content;
 
-}
 
 .red {
-  color: rgb(255, 166, 0);
+  color: rgb(255, 111, 0);
 }
 
-.App-wallet {
-  left: 75%;
+.App-wallet-up {
+  left: 80%;
+  top: 10%;
 }
+
+
 
 .App-body {
   background-color: transparent;
@@ -59,11 +60,9 @@
   border: 2px solid #242020;
 }
 
-
 .bal {
-  padding: 1rem !important;
+  padding: 0.75rem !important;
   border: 2px solid #242020;
-  border-radius: 4px;
   background: rgba(72 176 226 / 10%);
   align-items: center;
   justify-content: center;
@@ -75,7 +74,7 @@
 .bg-custom {
   background-color: #776441;
   background: #7a6845;
-  background: linear-gradient(120deg, #776441, #CEAD94 40%, #dab675)
+  background: linear-gradient(120deg, #776441, #CEAD94 40%, #e5d7bc)
 }
 
 .badge {
