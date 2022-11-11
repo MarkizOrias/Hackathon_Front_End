@@ -72,7 +72,10 @@ async function connectAndDisplayBalance() {
     balWall.innerHTML = balanceAbb
 
     stateTwo.style.display = "block"
-    stateMidOne.style.display = "block"
+
+    if (stateMidTwo.style.display == "none") {
+      stateMidOne.style.display = "block"
+    }
 
   } else {
     firstMessage.innerHTML = "Please install MetaMask and reload this page"

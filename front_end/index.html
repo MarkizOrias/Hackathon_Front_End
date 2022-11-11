@@ -21,7 +21,7 @@
         </div><br />
         <div></div>
       </div>
-      <div class="fixed" id="stateTwo" style="display:none;">
+      <div class="fixed" id="stateTwo" style="display:none">
         <div class="bal ">Connected wallet:
           <div id="addWall"></div><br />Goerli Balance:
           <div id="balWall"></div><br /><button class="button" type="action" id="disconnectButton">
@@ -45,23 +45,20 @@
     </div>
 
     <!-- TODO -->
-    <div>
-      <div class="fixedMid" id="stateMidOne" style="display:none;">
-        <div class="balMid">Check certificates you own<br /><br /><button class="button" type="action"
-            id="checkCertsBtn">
-            Check Now
-          </button></div><br />
-        <div></div>
+    <div class="fixedMid" id="stateMidOne" style="display:none">
+      <div class="balMid">Check certificates you own<br /><br /><button class="button" type="action" id="checkCertsBtn">
+          Check Now
+        </button></div><br />
+      <div></div>
+    </div>
+    <div class="fixedMid" id="stateMidTwo" style="display:none">
+      <div class="balMid">List of certificates you own:<br />
+        <div id="listWall" class="overflowing"></div><br />
+        <div><button class="button" type="action" id="hideCertsBtn">
+            Hide list
+          </button></div>
       </div>
-      <div class="fixedMid" id="stateMidTwo" style="display:none;">
-        <div class="balMid">List of certificates you own:<br /><br />
-          <div id="listWall" class="overflowing"></div><br />
-          <div><button class="button" type="action" id="hideCertsBtn">
-              Hide list
-            </button></div>
-        </div>
-      </div>
-      <div id="mackaBiczka"></div>
+    </div>
 
 </head>
 
@@ -99,6 +96,7 @@
       on-chain<br /><button type="submit" class="button" id="storeButton" name="store-button">Store</button>
     </h3>
   </div>
+
 
 </body>
 
