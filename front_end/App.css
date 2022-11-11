@@ -6,6 +6,37 @@
   transform: translate(-50%, -0%);
 }
 
+.fixedMid {
+  position: fixed;
+  background-color: transparent;
+  top: 50%;
+  left: 90%;
+  transform: translate(-50%, -0%);
+}
+
+.overflowing {
+  overflow-y: scroll;
+  max-height: 200px;
+}
+
+.bal {
+  padding: 0.75rem !important;
+  border: 2px solid #242020;
+  background: rgba(72 176 226 / 10%);
+  align-items: center;
+  justify-content: center;
+  color: #c2ccd6;
+}
+
+
+.balMid {
+  padding: 0.75rem !important;
+  border: 2px solid #242020;
+  background: rgba(72 176 226 / 10%);
+  align-items: center;
+  justify-content: center;
+  color: #c2ccd6;
+}
 
 .App {
   background-color: #181515;
@@ -60,14 +91,7 @@
   border: 2px solid #242020;
 }
 
-.bal {
-  padding: 0.75rem !important;
-  border: 2px solid #242020;
-  background: rgba(72 176 226 / 10%);
-  align-items: center;
-  justify-content: center;
-  color: #c2ccd6;
-}
+
 
 /* Styles from hasher website */
 

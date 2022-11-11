@@ -13,10 +13,12 @@
   <div>
     <div>
       <div class="fixed" id="stateOne">
-        <div id="firstMessage" class="bal">Please connect your wallet<br /><br /><button class="button" type="action"
+        <div class="bal">
+          <div id="firstMessage">Please connect your wallet</div><br /><button class="button" type="action"
             id="connectButton">
             Connect Wallet
-          </button></div><br />
+          </button>
+        </div><br />
         <div></div>
       </div>
       <div class="fixed" id="stateTwo" style="display:none;">
@@ -43,21 +45,23 @@
     </div>
 
     <!-- TODO -->
-    <!-- <div>
-      <div class="fixedMid" id="stateMidOne">
-        <div class="balMid">Check certificates you own<br /></div><br />
-        <div><button class="button" type="action" id="checkCertsBtn">
+    <div>
+      <div class="fixedMid" id="stateMidOne" style="display:none;">
+        <div class="balMid">Check certificates you own<br /><br /><button class="button" type="action"
+            id="checkCertsBtn">
             Check Now
-          </button></div>
+          </button></div><br />
+        <div></div>
       </div>
       <div class="fixedMid" id="stateMidTwo" style="display:none;">
-        <div class="balMid">List of certificates you own:
-          <div id="addWall"></div><br />
+        <div class="balMid">List of certificates you own:<br /><br />
+          <div id="listWall" class="overflowing"></div><br />
           <div><button class="button" type="action" id="hideCertsBtn">
               Hide list
             </button></div>
         </div>
-      </div> -->
+      </div>
+      <div id="mackaBiczka"></div>
 
 </head>
 

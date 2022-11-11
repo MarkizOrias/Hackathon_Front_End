@@ -18,21 +18,34 @@ const connectButton = document.getElementById("connectButton")
 connectButton.onclick = connectAndDisplayBalance
 const storeButton = document.getElementById("storeButton")
 storeButton.onclick = errStoreHash
+const checkCertsBtn = document.getElementById("checkCertsBtn")
+checkCertsBtn.onclick = checkCerts
+const hideCertsBtn = document.getElementById("hideCertsBtn")
+hideCertsBtn.onclick = hideListBtn
 
 // TODO
 // const checkCertsBtn = document.getElementById("checkCertsBtn")
 // checkCertsBtn.onclick = checkCerts
 
 // Inputs For Status changes:
-const stateOne = document.getElementById("stateOne")
 const firstMessage = document.getElementById("firstMessage")
+const stateOne = document.getElementById("stateOne")
 const stateTwo = document.getElementById("stateTwo")
+const stateMidOne = document.getElementById("stateMidOne")
+const stateMidTwo = document.getElementById("stateMidTwo")
 const addWall = document.getElementById("addWall")
 const balWall = document.getElementById("balWall")
+const listWall = document.getElementById("listWall")
 
-async function disconnectAndHideBalance() {
+function disconnectAndHideBalance() {
   stateTwo.style.display = "none"
   stateOne.style.display = "block"
+}
+
+function hideListBtn() {
+  stateMidTwo.style.display = "none"
+  stateMidOne.style.display = "block"
+  listWall.innerHTML = "" //overflow eliminated
 }
 
 async function connectAndDisplayBalance() {
@@ -42,8 +55,10 @@ async function connectAndDisplayBalance() {
     } catch (error) {
       console.log(error)
     }
-    connectButton.innerHTML = "Connected"
+
     stateOne.style.display = "none"
+    connectButton.innerHTML = "Show Balance"
+    firstMessage.innerHTML = "You're connected"
 
     const accounts = await ethereum.request({ method: "eth_accounts" })
     const acc = accounts.toString()
@@ -57,6 +72,7 @@ async function connectAndDisplayBalance() {
     balWall.innerHTML = balanceAbb
 
     stateTwo.style.display = "block"
+    stateMidOne.style.display = "block"
 
   } else {
     firstMessage.innerHTML = "Please install MetaMask and reload this page"
@@ -100,10 +116,20 @@ async function checkCerts() {
     const signer_address = signer.getAddress(this)
     const contract = new ethers.Contract(contractAddress, abi, signer)
     try {
-      const out = contract.getCertificatesYouOwn(signer_address)
 
-      const txtOut = await out.toString()
-      console.log(txtOut)
+      const result = await contract.getCertificatesYouOwn(signer_address)
+      // addresses = out.then(value => { address = value })
+      stateMidOne.style.display = "none"
+      stateMidTwo.style.display = "block"
+      if (result.length == 0) {
+        listWall.innerHTML = "Your address has no copyrights yet"
+      } else {
+        for (let i = 0; i < result.length; i++) {
+          listWall.innerHTML += result[i] + "<br>"
+        }
+      }
+
+
     } catch (error) {
       console.log(error)
     }
