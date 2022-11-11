@@ -77,6 +77,7 @@ async function connectAndDisplayBalance() {
 
   } else {
     firstMessage.innerHTML = "Please install MetaMask and reload this page"
+
   }
 }
 
