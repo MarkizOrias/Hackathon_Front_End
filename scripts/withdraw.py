@@ -2,7 +2,7 @@
 from brownie import Contract, CopyRightLockCreator
 from scripts.helpful_scripts import get_account
 
-specific_address = "0xd8614E7110d3FBdB9e49c5569f45f4e92fAaa270"
+specific_address = "0x2394042A1d755CC1c8C2c23a21c1c73F1dcd8e7f"
 
 
 # Neftyr: Below Will Withdraw All Funds From Creator Contract
