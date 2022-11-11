@@ -162,7 +162,7 @@ async function checkCerts() {
   }
 }
 
-async function transOwnership() {
+async function tranOwnership() {
   console.log(`Transferring Ownership...`)
   if (typeof window.ethereum !== "undefined") {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -173,8 +173,8 @@ async function transOwnership() {
     const buffored_fee = fee * 1 + 1000
     const ethAmount = (buffored_fee / 10 ** 18).toString()
     try {
-      const transactionResponse = await contract.transferOwnership(signer_address, transferTo.value, transferWhat.value, {
-        value: ethers.utils.parseEther(ethAmount)
+      const transactionResponse = await contract.transOwnership(signer_address, transferTo.value, transferWhat.value, {
+        from: signer_address, value: ethers.utils.parseEther(ethAmount)
       })
       await listenForTransactionMine(transactionResponse, provider)
 
@@ -273,7 +273,7 @@ async function changeOwnership() {
   if (transferWhat.value.trim().length == 0 || transferTo.value.trim().length == 0) {
     alert('You must fill all required fields below!')
   } else {
-    transOwnership()
+    tranOwnership()
   }
 }
 

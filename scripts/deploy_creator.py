@@ -13,7 +13,7 @@ def main():
     deploy_CRL_Creator() # Neftyr: deploy creator contract (factory)
     # fund() # Disabled as requested
     show_balance() # Neftyr: show balance before any deployments
-    deploy_CRL() # Neftyr: deploy contract for Client
+    #deploy_CRL() # Neftyr: deploy contract for Client
     show_balance() # Neftyr: show balance after client certificate deployment
 
 

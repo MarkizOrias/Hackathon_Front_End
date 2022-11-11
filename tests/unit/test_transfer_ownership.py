@@ -84,7 +84,7 @@ def test_transfer_ownership():
     # Case 1 (MALICIOUS) ------------------------------------------------------------------------------------------------------
     # Try to move Cert 2 from Client 2 to Client 3 as Client 3
     print("Case 1 ------------------------------------------------------------------------------------------------------")
-    case_one = creator_contract.transferOwnership(account_three, account_three, cert_to_move, {"from": account_three, "value": fee})
+    case_one = creator_contract.transOwnership(account_three, account_three, cert_to_move, {"from": account_three, "value": fee})
     case_one.wait(1)
     print("First Malicious Transfer Of Ownership Attempt Completed!")
     get_certs_two_case_one = creator_contract.getCertificatesYouOwn(account_two)
@@ -99,7 +99,7 @@ def test_transfer_ownership():
     # Case 2 (MALICIOUS) ------------------------------------------------------------------------------------------------------
     # Try to move Cert 2 from Client 2 to Client 3 as Client 1 (Who is owner of creator contract)
     print("Case 2 ------------------------------------------------------------------------------------------------------")
-    case_two = creator_contract.transferOwnership(account_one, account_three, cert_to_move, {"from": account_one, "value": fee})
+    case_two = creator_contract.transOwnership(account_one, account_three, cert_to_move, {"from": account_one, "value": fee})
     case_two.wait(1)
     print("Second Malicious Transfer Of Ownership Attempt Completed!")
     get_certs_two_case_two = creator_contract.getCertificatesYouOwn(account_two)
@@ -118,7 +118,7 @@ def test_transfer_ownership():
     # Case 3 (CORRECT) ------------------------------------------------------------------------------------------------------
     # Try to move Cert 2 from Client 2 to Client 3 as Client 2 (Who is owner of Cert 2)
     print("Case 3 ------------------------------------------------------------------------------------------------------")
-    case_three = creator_contract.transferOwnership(account_two, account_three, cert_to_move, {"from": account_two, "value": fee})
+    case_three = creator_contract.transOwnership(account_two, account_three, cert_to_move, {"from": account_two, "value": fee})
     case_three.wait(1)
     print("Correct Transfer Of Ownership Attempt Completed!")
     get_certs_two_case_three = creator_contract.getCertificatesYouOwn(account_two)
