@@ -19,6 +19,10 @@
   max-height: 200px;
 }
 
+.colorHead {
+  color: #CEAD94;
+}
+
 .bal {
   padding: 0.75rem !important;
   border: 2px solid #242020;
@@ -46,18 +50,9 @@
   padding-bottom: 3rem !important;
 }
 
-
-
 .red {
   color: rgb(255, 111, 0);
 }
-
-.App-wallet-up {
-  left: 80%;
-  top: 10%;
-}
-
-
 
 .App-body {
   background-color: transparent;
