@@ -16,7 +16,10 @@
 .overflowing {
   overflow-y: auto;
   overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   max-height: 100px;
+  font-size: 15px;
 }
 
 .colorHead {
@@ -29,7 +32,8 @@
   border: 2px solid #242020;
   background: rgba(72 176 226 / 10%);
   color: #c2ccd6;
-  width: 300px;
+
+  width: 320px;
   font-size: smaller;
 }
 
@@ -39,7 +43,7 @@
   border: 2px solid #242020;
   background: rgba(72 176 226 / 10%);
   color: #c2ccd6;
-  width: 300px;
+  width: 320px;
   font-size: smaller;
 }
 
@@ -128,7 +132,7 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #c8c7c6;
+  color: #CEAD94;
   background-color: rgba(72 176 226 / 10%);
   background-clip: padding-box;
   border: 2px solid #242020;
@@ -169,4 +173,24 @@ input[type="file"]::file-selector-button:hover {
   background-color: #c2ccd6;
   border: 2px solid #242020;
   font-family: 'Orbitron', sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(72 176 226 / 10%);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #181515;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #363434;
 }
