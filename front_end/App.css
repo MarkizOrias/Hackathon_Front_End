@@ -178,7 +178,7 @@ input[type="file"]::file-selector-button:hover {
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
-
+  height: 10px;
 }
 
 /* Track */
@@ -188,10 +188,15 @@ input[type="file"]::file-selector-button:hover {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #242121;
+  background: #1d1a1a;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #363434;
+}
+
+
+::-webkit-scrollbar-corner {
+  background: #1d1a1a;
 }
