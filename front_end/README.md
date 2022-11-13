@@ -1,53 +1,44 @@
-HOW TO START:
-1. Pull POPhackaton repo (Back_End)
-2. Type in main folder console -> `npx create-react-app front_end --template typescript`
-3. Type in front_end folder console -> `yarn add @usedapp/core ethers`
-4. pull Hachathon_Front_End
-5. Add .env file to local front_end folder with REACT_APP_INFURA_KEY
 
+# CopyRightLocker Project - FrontEnd
 
+**The Back-End repo is here:** https://github.com/MarkizOrias/Hackathon2022BackEnd
 
-# Decentralized App Tutorial: Ballot app
+Simple, fast, secure and reliable platform, to store your copyrights on-chain. You can also transfer your copyrights to another owner by using an additional feature, apart from data of your wallet. This allows to prevent falsification and ensures persistance of the certificates on the long time.
 
-This project was bootstrapped with Create React App. It uses web3.js and useDApp for the smart contract and web3 functionalities.
+# Live Demo
 
-If you're new to Solidity and Ethereum smart contract, start here:
+https://floral-sky
 
-- [Blockchain Programming w/ Brownie (python), Ganache, Solidity | Beginner tutorial series](https://www.youtube.com/playlist?list=PLXsFtK46HZxVK1r-Irndd9gMBMdouLrMQ)
-## Available Scripts
+# Steps To Run
 
-In the project directory, you can run:
+**1. Connect Your Wallet**
 
-### `npm start`
+![Screenshot](..\readme_images\Connect.PNG)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**2. Fill All Required Fields**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* It will cost you 50$ in ETH, price feeds provided and powered by Chainlink!
 
-### `npm test`
+![Screenshot](..\readme_images\Fill.PNG)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**3. Check Out Certificates You Own!**
 
-### `npm run build`
+It is completely free additional function :)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Screenshot](..\readme_images\Copy.PNG)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Screenshot](..\readme_images\List.PNG)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**4. Check Details Of Certain Certificate On Etherscan!**
 
-### `npm run eject`
+![Screenshot](..\readme_images\Ether.PNG)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**5. You Can Also Always Transfer Ownership**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In case you would like to sell your copyrights to someone use below function.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Fill required boxes with proper data and voilà!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Cost of that function is also 50$ in ETH, price feeds provided and powered by Chainlink!
 
+![Screenshot](..\readme_images\Transfer.PNG)
