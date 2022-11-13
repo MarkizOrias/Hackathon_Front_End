@@ -31,6 +31,18 @@ Or other compiler for multiple programming languages
 
 * Click on `Go Live` button in bottom right corner of your VSCode
 
+**5. Setup your private keys!**
+
+* Rename `.env.example` to `.env`
+
+* ***Add your private keys for:***
+
+- Your Wallet Address
+
+- Infura if you want to test this on a Testnet like Goerli
+
+- Etherscan Token if you want to verify your contracts
+
 # Steps To Run
 
 **1. Connect Your Wallet**
