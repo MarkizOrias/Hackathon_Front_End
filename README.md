@@ -29,7 +29,11 @@ It is completely free additional function :)
 
 ![Screenshot](.\readme_images\List.PNG)
 
-**4. You Can Also Always Transfer Ownership**
+**4. Check Details Of Certain Certificate On Etherscan!**
+
+![Screenshot](.\readme_images\Ether.PNG)
+
+**5. You Can Also Always Transfer Ownership**
 
 In case you would like to sell your copyrights to someone use below function.
 
