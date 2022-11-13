@@ -13,25 +13,25 @@ https://floral-sky
 
 **1. Connect Your Wallet**
 
-![Alt text](..\readme_images\Connect.PNG)
+![Alt text](..\readme_images\Connect.PNG?raw=true "Connect")
 
 **2. Fill All Required Fields**
 
 * It will cost you 50$ in ETH, price feeds provided and powered by Chainlink!
 
-![Alt text](..\readme_images\Fill.PNG)
+![Alt text](..\readme_images\Fill.PNG?raw=true "Fill")
 
 **3. Check Out Certificates You Own!**
 
 It is completely free additional function :)
 
-![Alt text](..\readme_images\Copy.PNG)
+![Alt text](..\readme_images\Copy.PNG?raw=true "Copy")
 
-![Alt text](..\readme_images\List.PNG)
+![Alt text](..\readme_images\List.PNG?raw=true "List")
 
 **4. Check Details Of Certain Certificate On Etherscan!**
 
-![Alt text](..\readme_images\Ether.PNG)
+![Alt text](..\readme_images\Ether.PNG?raw=true "Ether")
 
 **5. You Can Also Always Transfer Ownership**
 
@@ -41,4 +41,4 @@ Fill required boxes with proper data and voilà!
 
 * Cost of that function is also 50$ in ETH, price feeds provided and powered by Chainlink!
 
-![Alt text](..\readme_images\Transfer.PNG)
+![Alt text](..\readme_images\Transfer.PNG?raw=true "Transfer")
