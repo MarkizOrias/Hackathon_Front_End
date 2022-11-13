@@ -7,7 +7,29 @@ Simple, fast, secure and reliable platform, to store your copyrights on-chain. Y
 
 # Live Demo
 
-https://floral-sky
+**1. Download And Open VSCode**
+
+Or other compiler for multiple programming languages
+
+**2. Install "Live Server" Extension**
+
+![Alt text](/readme_images/Live.PNG?raw=true "Live")
+
+**3. Clone Our Repository**
+
+* Install Git - https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+* Create new project folder and enter this folder in your powershell terminal
+
+* Type following commends in powershell terminal in below order:
+
+`git clone https://github.com/MarkizOrias/Hackathon_Front_End.git`
+
+**4. Run Our Page On Local Host**
+
+* Click on `index.html` file, which is located in `front_end` folder
+
+* Click on `Go Live` button in bottom right corner of your VSCode
 
 # Steps To Run
 
