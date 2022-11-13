@@ -19,7 +19,7 @@ https://floral-sky
 
 * It will cost you 50$ in ETH, price feeds provided and powered by Chainlink!
 
-![Alt text](/readme_images/Fill_Form.PNG?raw=true "Fill_Form")
+![Alt text](/readme_images/Fill.PNG?raw=true "Fill")
 
 **3. Check Out Certificates You Own!**
 
