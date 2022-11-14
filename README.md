@@ -7,6 +7,10 @@ Simple, fast, secure and reliable platform, to store your copyrights on-chain. Y
 
 # Live Demo
 
+https://icy-rice-8014.on.fleek.co/
+
+# Live Local Demo
+
 **1. Download And Open VSCode**
 
 Or other compiler for multiple programming languages
